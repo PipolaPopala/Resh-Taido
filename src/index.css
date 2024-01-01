@@ -1,0 +1,20 @@
+*, ::after, ::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.btn {
+  border-radius: 10px;
+  pointer-events: auto;
+  cursor: pointer;
+  border: none;
+}

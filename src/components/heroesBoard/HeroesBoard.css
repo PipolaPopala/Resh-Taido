@@ -1,0 +1,8 @@
+.image-wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  column-gap: 5vw;
+  row-gap: 5vh;
+}

@@ -1,0 +1,34 @@
+.person-wrapper {
+  width: 25%;
+  min-width: 250px;
+  border-radius: 20px;
+}
+
+.person-image {
+  width: 100%;
+  border-radius: 20px;
+  pointer-events: auto;
+  cursor: pointer;
+  transition: all 1s ease-out;
+  align-self: center;
+}
+
+/* .person-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #fff;
+} */
+
+/* @media (prefers-reduced-motion: no-preference) {
+  .person-image {
+    animation: person-image-spin infinite 20s linear;
+  }
+}
+
+@keyframes person-image-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */
