@@ -89,6 +89,7 @@ function Front() {
         {/* <Typography variant="h4" component="p" color="error">{likes}</Typography> */}
         <FavoriteRoundedIcon fontSize="large" color="error" />
       </div>
+      <br />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 .person-wrapper {
   width: 25%;
-  min-width: 250px;
+  min-width: 350px;
   border-radius: 20px;
 }
 
@@ -13,22 +13,6 @@
   align-self: center;
 }
 
-/* .person-image:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px #fff;
-} */
-
-/* @media (prefers-reduced-motion: no-preference) {
-  .person-image {
-    animation: person-image-spin infinite 20s linear;
-  }
+.cursor-not {
+  cursor: not-allowed;
 }
-
-@keyframes person-image-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
