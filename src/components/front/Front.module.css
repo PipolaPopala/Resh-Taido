@@ -12,7 +12,7 @@
   row-gap: 5vh;
 }
 
-.action-wrapper {
+.actionWrapper {
   display: flex;
   justify-content: center;
   align-items: center;

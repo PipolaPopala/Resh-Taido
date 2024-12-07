@@ -1,6 +1,6 @@
-import './Back.css';
-import { useState, useEffect } from 'react';
-import Square from '../square/Square';
+import * as classes from "./Back.module.css";
+import { useState, useEffect } from "react";
+import Square from "../square";
 
 function Back() {
   const [countSquares, setCountSquares] = useState(0);
@@ -17,7 +17,7 @@ function Back() {
       const calculatedCountSquares = countColumns * countRows;
       return calculatedCountSquares;
     };
-    
+
     const resizeHandler = () => {
       const calculatedCountSquares = calculateCountSquares();
       setCountSquares(calculatedCountSquares);
@@ -25,14 +25,14 @@ function Back() {
 
     const calculatedCountSquares = calculateCountSquares();
     setCountSquares(calculatedCountSquares);
-    window.addEventListener('resize', resizeHandler);
+    window.addEventListener("resize", resizeHandler);
     return () => {
-      window.removeEventListener('resize', resizeHandler);
+      window.removeEventListener("resize", resizeHandler);
     };
   }, []);
 
   return (
-    <div className="container">
+    <div className={classes.container}>
       <Square countSquares={countSquares} />
     </div>
   );

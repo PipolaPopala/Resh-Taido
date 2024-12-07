@@ -1,10 +1,10 @@
-.person-wrapper {
+.personWrapper {
   width: 25%;
   min-width: 350px;
   border-radius: 20px;
 }
 
-.person-image {
+.personImage {
   width: 100%;
   border-radius: 20px;
   pointer-events: auto;
@@ -13,6 +13,6 @@
   align-self: center;
 }
 
-.cursor-not {
+.cursorNot {
   cursor: not-allowed;
 }

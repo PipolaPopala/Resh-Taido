@@ -1,14 +1,23 @@
-import './Square.css';
-import { useState } from 'react';
+import * as classes from "./Square.module.css";
+import { useState } from "react";
 
-function Square({countSquares}) {
-  const colors = ['#10D6D3', '#4BCEFA', '#F174E9', '#B253F9', '#2D91CF', '#F439C2', '#F2B67F', '#9D2938'];
+function Square({ countSquares }) {
+  const colors = [
+    "#10D6D3",
+    "#4BCEFA",
+    "#F174E9",
+    "#B253F9",
+    "#2D91CF",
+    "#F439C2",
+    "#F2B67F",
+    "#9D2938",
+  ];
   const whiteSquares = []; // Можно указать индексы квадратов, которые должны оставаться белыми
   const [squares, setSquares] = useState({});
 
   const setColor = (index) => {
     if (whiteSquares.includes(index)) {
-      setSquares((prevSquares) => ({ ...prevSquares, [index]: '#fff' }));
+      setSquares((prevSquares) => ({ ...prevSquares, [index]: "#fff" }));
     } else {
       setSquares((prevSquares) => ({
         ...prevSquares,
@@ -32,12 +41,12 @@ function Square({countSquares}) {
       {Array.from({ length: countSquares }, (_, index) => (
         <div
           key={index}
-          className="square"
+          className={classes.square}
           style={{
-            backgroundColor: squares[index] || '',
+            backgroundColor: squares[index] || "",
             boxShadow: squares[index]
               ? `0 0 2px ${squares[index]}, 0 0 10px ${squares[index]}`
-              : '',
+              : "",
           }}
           onMouseOver={() => setColor(index)}
           onMouseLeave={() => removeColor(index)}
@@ -45,6 +54,6 @@ function Square({countSquares}) {
       ))}
     </>
   );
-};
+}
 
 export default Square;
