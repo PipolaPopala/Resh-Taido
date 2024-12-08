@@ -1,18 +1,20 @@
 import * as classes from "./Square.module.css";
 import { useState } from "react";
 
+const colors = [
+  "#10D6D3",
+  "#4BCEFA",
+  "#F174E9",
+  "#B253F9",
+  "#2D91CF",
+  "#F439C2",
+  "#F2B67F",
+  "#9D2938",
+];
+
+const whiteSquares = []; // Можно указать индексы квадратов, которые должны оставаться белыми
+
 function Square({ countSquares }) {
-  const colors = [
-    "#10D6D3",
-    "#4BCEFA",
-    "#F174E9",
-    "#B253F9",
-    "#2D91CF",
-    "#F439C2",
-    "#F2B67F",
-    "#9D2938",
-  ];
-  const whiteSquares = []; // Можно указать индексы квадратов, которые должны оставаться белыми
   const [squares, setSquares] = useState({});
 
   const setColor = (index) => {

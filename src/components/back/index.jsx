@@ -2,6 +2,9 @@ import * as classes from "./Back.module.css";
 import { useState, useEffect } from "react";
 import Square from "../square";
 
+const SQUARE_SIZE = 20; // размер квадратов в пикселях
+const PADDING = 2; // отступы между квадратами в пикселях
+
 function Back() {
   const [countSquares, setCountSquares] = useState(0);
 
@@ -10,21 +13,18 @@ function Back() {
       const windowWidth = window.innerWidth;
       const windowHeight = window.innerHeight;
       // Рассчитываем количество квадратов на основе размеров окна
-      const squareSize = 20; // размер квадратов в пикселях
-      const padding = 2; // отступы между квадратами в пикселях
-      const countColumns = Math.floor(windowWidth / (squareSize + padding));
-      const countRows = Math.floor(windowHeight / (squareSize + padding));
-      const calculatedCountSquares = countColumns * countRows;
-      return calculatedCountSquares;
+      const countColumns = Math.floor(windowWidth / (SQUARE_SIZE + PADDING));
+      const countRows = Math.floor(windowHeight / (SQUARE_SIZE + PADDING));
+      return countColumns * countRows;
     };
 
     const resizeHandler = () => {
-      const calculatedCountSquares = calculateCountSquares();
-      setCountSquares(calculatedCountSquares);
+      setCountSquares(calculateCountSquares());
     };
 
-    const calculatedCountSquares = calculateCountSquares();
-    setCountSquares(calculatedCountSquares);
+    // Изначальный расчет
+    setCountSquares(calculateCountSquares());
+
     window.addEventListener("resize", resizeHandler);
     return () => {
       window.removeEventListener("resize", resizeHandler);

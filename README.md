@@ -3,3 +3,21 @@
 #### You can listen to the opening and ending by clicking on the buttons
 
 #### You can listen to the phrases of the heroes of the story by clicking on their images
+
+### **⚙️ Stack:**
+
+- Parcel 2
+- React 18
+- Material Ui
+
+### Download dependencies
+
+```shell
+npm install
+```
+
+### Start the app
+
+```shell
+npm run start
+```

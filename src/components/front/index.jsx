@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from "react";
 import { Typography, Button } from "@mui/material";
 import PlayArrowRoundedIcon from "@mui/icons-material/PlayArrowRounded";
 import PauseRoundedIcon from "@mui/icons-material/PauseRounded";
-import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
 import HeroesBoard from "../heroesBoard";
 
 function Front() {
@@ -17,7 +16,6 @@ function Front() {
   const pointerEvents = { pointerEvents: "auto" };
 
   function toggleOpening() {
-    console.log('toggleOpening')
     setOpening(!opening);
     setEnding(false);
   }
