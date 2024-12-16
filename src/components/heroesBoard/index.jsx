@@ -6,7 +6,8 @@ const heroes = [
         name: "Dominik",
         image: new URL('../../utilities/dominik/dominik.webp', import.meta.url),
         color: "#FFFFF2",
-        audioFile: require("url:../../utilities/dominik/dominik.mp3")
+        // audioFile: require("url:../../utilities/dominik/dominik.mp3")
+        audioFile: require("url:../../utilities/dominik/dominikSay.wav") // success!
     },
     {
         name: "Ezra",
