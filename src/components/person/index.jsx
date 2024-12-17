@@ -4,7 +4,7 @@ import cn from "classnames";
 
 function Person({ name, image, color, audioFile, ...props }) {
   const [focus, setFocus] = useState(false);
-  const [isSaying, setIsSaying] = useState(false);
+  const [isSaying, setIsSaying] = useState(false); // локальное состояние, которое вынусу в глобальное
   const audioRef = useRef(null);
 
   useEffect(() => {
@@ -34,6 +34,11 @@ function Person({ name, image, color, audioFile, ...props }) {
     [classes.cursorNot]: isSaying,
   });
 
+  const onEnded = () => {
+    setIsSaying(false)
+    setFocus(false)
+  }
+
   return (
       <div
           className={classes.personWrapper}
@@ -48,7 +53,7 @@ function Person({ name, image, color, audioFile, ...props }) {
             alt={`${name} image`}
             style={focus ? style : null}
         />
-        <audio ref={audioRef} type="audio/mpeg" onEnded={() => setIsSaying(false)}/>
+        <audio ref={audioRef} type="audio/mpeg" onEnded={onEnded}/>
       </div>
   );
 }
