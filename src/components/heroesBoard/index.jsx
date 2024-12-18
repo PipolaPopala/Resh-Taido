@@ -20,7 +20,8 @@ const heroes = [
         name: "Fobitiya",
         image: new URL('../../utilities/fobitiya/fobitiya.webp', import.meta.url),
         color: "#DC0708",
-        audioFile: require("url:../../utilities/fobitiya/fobitiya.mp3")
+        // audioFile: require("url:../../utilities/fobitiya/fobitiya.mp3")
+        audioFile: require("url:../../utilities/fobitiya/fobitiyaSay.wav")
     },
     {
         name: "Kastor",
