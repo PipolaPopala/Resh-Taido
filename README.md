@@ -6,9 +6,10 @@
 
 ### **⚙️ Stack:**
 
-- Parcel 2
+- Parcel
 - React 18
 - Material Ui
+- Jotai
 
 ### Download dependencies
 

@@ -1,39 +1,30 @@
 import * as classes from "./Front.module.css";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { Typography, Button } from "@mui/material";
 import PlayArrowRoundedIcon from "@mui/icons-material/PlayArrowRounded";
 import PauseRoundedIcon from "@mui/icons-material/PauseRounded";
 import HeroesBoard from "../heroesBoard";
+import { useAtom } from 'jotai';
+import { activeAudioAtom, activePersonAtom } from '../../store/audioStore';
 
 function Front() {
-  const [opening, setOpening] = useState(false);
-  const [ending, setEnding] = useState(false);
-  const [openingSrc, setOpeningSrc] = useState(null);
-  const [endingSrc, setEndingSrc] = useState(null);
+  const [activePerson, setActivePerson] = useAtom(activePersonAtom);
+  const [activeAudio, setActiveAudio] = useAtom(activeAudioAtom);
   const audioOpening = useRef(null);
   const audioEnding = useRef(null);
-
-  const pointerEvents = { pointerEvents: "auto" };
-
-  function toggleOpening() {
-    setOpening(!opening);
-    setEnding(false);
-  }
 
   useEffect(() => {
     const fetchAudio = async () => {
       try {
         const openingResponse = await fetch(require("url:../../utilities/opening.mp3"));
-        const openingUrl = openingResponse.url;
-        setOpeningSrc(openingUrl);
+        audioOpening.current.src = openingResponse.url;
       } catch (error) {
         console.error('Ошибка при загрузке аудио opening:', error);
       }
 
       try {
         const endingResponse = await fetch(require("url:../../utilities/ending.mp3"));
-        const endingUrl = endingResponse.url;
-        setEndingSrc(endingUrl);
+        audioEnding.current.src = endingResponse.url;
       } catch (error) {
         console.error('Ошибка при загрузке аудио ending:', error);
       }
@@ -42,38 +33,33 @@ function Front() {
     fetchAudio();
   }, []);
 
-  useEffect(() => {
-    if (audioOpening.current && openingSrc) {
-      if (opening) {
-        audioOpening.current.play();
-      } else {
-        audioOpening.current.pause();
-      }
+  const toggleOpening = () => {
+    if (activeAudio && activeAudio !== audioOpening.current) {
+      activeAudio.pause();
     }
-  }, [opening, openingSrc]);
-
-  function endOpening() {
-    setOpening(!opening);
-  }
-
-  function toggleEnding() {
-    setOpening(false);
-    setEnding(!ending);
-  }
-
-  function endEnding() {
-    setEnding(!ending);
-  }
-
-  useEffect(() => {
-    if (audioEnding.current && endingSrc) {
-      if (ending) {
-        audioEnding.current.play();
-      } else {
-        audioEnding.current.pause();
-      }
+    if (audioOpening.current.paused) {
+      audioOpening.current.play();
+      setActiveAudio(audioOpening.current);
+      setActivePerson(null)
+    } else {
+      audioOpening.current.pause();
+      setActiveAudio(null);
     }
-  }, [ending, endingSrc]);
+  };
+
+  const toggleEnding = () => {
+    if (activeAudio && activeAudio !== audioEnding.current) {
+      activeAudio.pause();
+    }
+    if (audioEnding.current.paused) {
+      audioEnding.current.play();
+      setActiveAudio(audioEnding.current);
+      setActivePerson(null)
+    } else {
+      audioEnding.current.pause();
+      setActiveAudio(null);
+    }
+  };
 
   return (
     <div className={classes.front}>
@@ -81,22 +67,22 @@ function Front() {
         <Button
           variant="contained"
           color="inherit"
-          style={pointerEvents}
+          style={{pointerEvents: "auto"}}
           onClick={toggleOpening}
         >
-          {opening ? <PauseRoundedIcon /> : <PlayArrowRoundedIcon />}
+          {audioOpening.current && !audioOpening.current.paused ? <PauseRoundedIcon /> : <PlayArrowRoundedIcon />}
           <Typography variant="button">opening</Typography>
-          <audio ref={audioOpening} src={openingSrc} type="audio/mpeg" onEnded={endOpening}></audio>
+          <audio ref={audioOpening} type="audio/mpeg"/>
         </Button>
         <Button
           variant="contained"
           color="inherit"
-          style={pointerEvents}
+          style={{pointerEvents: "auto"}}
           onClick={toggleEnding}
         >
-          {ending ? <PauseRoundedIcon /> : <PlayArrowRoundedIcon />}
+          {audioEnding.current && !audioEnding.current.paused ? <PauseRoundedIcon /> : <PlayArrowRoundedIcon />}
           <Typography variant="button">ending</Typography>
-          <audio ref={audioEnding} src={endingSrc} type="audio/mpeg" onEnded={endEnding}></audio>
+          <audio ref={audioEnding} type="audio/mpeg"/>
         </Button>
       </div>
 

@@ -12,7 +12,3 @@
   transition: all 1s ease-out;
   align-self: center;
 }
-
-.cursorNot {
-  cursor: not-allowed;
-}

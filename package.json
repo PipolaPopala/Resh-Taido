@@ -4,7 +4,7 @@
   "private": true,
   "source": "src/index.html",
   "scripts": {
-    "start": "parcel",
+    "dev": "parcel",
     "build": "parcel build"
   },
   "devDependencies": {
@@ -17,6 +17,7 @@
     "@mui/icons-material": "^6.1.8",
     "@mui/material": "^6.1.8",
     "classnames": "^2.5.1",
+    "jotai": "^2.10.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   }

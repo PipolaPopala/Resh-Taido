@@ -1,5 +1,7 @@
 import * as classes from "./HeroesBoard.module.css";
 import Person from "../person";
+import { useAtom } from 'jotai';
+import { activeAudioAtom, activePersonAtom } from '../../store/audioStore';
 
 const heroes = [
     {
@@ -44,10 +46,37 @@ const heroes = [
 ];
 
 function HeroesBoard() {
+    const [activePerson, setActivePerson] = useAtom(activePersonAtom);
+    const [activeAudio, setActiveAudio] = useAtom(activeAudioAtom);
+
+    const playAudio = (personName, audioRef) => {
+        if (activePerson) {
+            activePerson.audioRef.current.pause();
+        }
+
+        // Остановка глобально активного аудио
+        if (activeAudio) {
+            activeAudio.pause();
+            setActiveAudio(null);
+        }
+
+        setActivePerson({ name: personName, audioRef });
+        audioRef.current.play();
+        setActiveAudio(audioRef.current);
+    };
+
   return (
     <div className={classes.imageWrapper}>
         {heroes.map((hero) => (
-            <Person key={hero.name} name={hero.name} image={hero.image} color={hero.color} audioFile={hero.audioFile} />
+            <Person key={hero.name}
+                    name={hero.name}
+                    image={hero.image}
+                    color={hero.color}
+                    audioFile={hero.audioFile}
+                    playAudio={playAudio}
+                    activePerson={activePerson}
+                    setActivePerson={setActivePerson}
+            />
         ))}
     </div>
   );
