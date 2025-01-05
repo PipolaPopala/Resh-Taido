@@ -4,6 +4,8 @@ import { useState, useRef, useEffect } from "react";
 
 function Person({ name, image, color, audioFile, playAudio, activePerson, setActivePerson, ...props }) {
   const [focus, setFocus] = useState(false);
+  const [duration, setDuration] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
   const audioRef = useRef(null);
 
   useEffect(() => {
@@ -17,6 +19,24 @@ function Person({ name, image, color, audioFile, playAudio, activePerson, setAct
     };
     fetchAudio();
   }, [audioRef]);
+
+  useEffect(() => {
+    const handleLoadedMetadata = () => {
+      setDuration(audioRef.current.duration);
+    };
+
+    const handleTimeUpdate = () => {
+      setCurrentTime(audioRef.current.currentTime);
+    };
+
+    audioRef.current.addEventListener('loadedmetadata', handleLoadedMetadata);
+    audioRef.current.addEventListener('timeupdate', handleTimeUpdate);
+
+    return () => {
+      audioRef.current.removeEventListener('loadedmetadata', handleLoadedMetadata);
+      audioRef.current.removeEventListener('timeupdate', handleTimeUpdate);
+    };
+  }, []);
 
   const onClick = () => {
     if (audioRef.current.paused) {
@@ -32,22 +52,28 @@ function Person({ name, image, color, audioFile, playAudio, activePerson, setAct
     boxShadow: `0 0 30px ${color}`,
   };
 
+  const formatTime = (time) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+  };
+
   return (
       <div
           className={classes.personWrapper}
           onClick={onClick}
           onMouseEnter={() => setFocus(true)}
           onMouseLeave={() => setFocus(false)}
+          style={focus || activePerson?.name === name ? style : null}
           {...props}
       >
         <img
             className={classes.personImage}
             src={image}
             alt={`${name} image`}
-            // style={focus || !audioRef.current.paused ? style : null}
-            style={focus || activePerson?.name === name ? style : null}
         />
         <audio ref={audioRef} type="audio/mpeg"/>
+        <span className={classes.time}>{formatTime(currentTime)} / {formatTime(duration)}</span>
       </div>
   );
 }

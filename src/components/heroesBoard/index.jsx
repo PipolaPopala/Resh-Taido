@@ -8,22 +8,19 @@ const heroes = [
         name: "Dominik",
         image: new URL('../../utilities/dominik/dominik.webp', import.meta.url),
         color: "#FFFFF2",
-        // audioFile: require("url:../../utilities/dominik/dominik.mp3")
-        audioFile: require("url:../../utilities/dominik/dominikSay.wav")
+        audioFile: require("url:../../utilities/dominik/dominik.mp3")
     },
     {
         name: "Ezra",
         image: new URL('../../utilities/ezra/ezra.webp', import.meta.url),
         color: "#EACD80",
-        // audioFile: require("url:../../utilities/ezra/ezra.mp3")
-        audioFile: require("url:../../utilities/ezra/ezraSay.wav")
+        audioFile: require("url:../../utilities/ezra/ezra.mp3")
     },
     {
         name: "Fobitiya",
         image: new URL('../../utilities/fobitiya/fobitiya.webp', import.meta.url),
         color: "#DC0708",
-        // audioFile: require("url:../../utilities/fobitiya/fobitiya.mp3")
-        audioFile: require("url:../../utilities/fobitiya/fobitiyaSay.wav")
+        audioFile: require("url:../../utilities/fobitiya/fobitiya.mp3")
     },
     {
         name: "Kastor",

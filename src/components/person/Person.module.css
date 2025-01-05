@@ -2,6 +2,8 @@
   width: 25%;
   min-width: 350px;
   border-radius: 20px;
+  transition: all 1s ease-out;
+  position: relative;
 }
 
 .personImage {
@@ -9,6 +11,12 @@
   border-radius: 20px;
   pointer-events: auto;
   cursor: pointer;
-  transition: all 1s ease-out;
   align-self: center;
+}
+
+.time {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  color: white;
 }

@@ -8,7 +8,7 @@ import { useAtom } from 'jotai';
 import { activeAudioAtom, activePersonAtom } from '../../store/audioStore';
 
 function Front() {
-  const [activePerson, setActivePerson] = useAtom(activePersonAtom);
+  const [, setActivePerson] = useAtom(activePersonAtom);
   const [activeAudio, setActiveAudio] = useAtom(activeAudioAtom);
   const audioOpening = useRef(null);
   const audioEnding = useRef(null);
