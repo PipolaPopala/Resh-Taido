@@ -1,6 +1,6 @@
 .personWrapper {
   width: 25%;
-  min-width: 350px;
+  min-width: 320px;
   border-radius: 20px;
   transition: all 1s ease-out;
   position: relative;

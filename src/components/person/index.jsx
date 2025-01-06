@@ -47,7 +47,7 @@ function Person({ name, image, color, audioFile, playAudio, activePerson, setAct
     }
   };
 
-  const style = {
+  const playStyle = {
     transform: "scale(1.05)",
     boxShadow: `0 0 30px ${color}`,
   };
@@ -64,7 +64,7 @@ function Person({ name, image, color, audioFile, playAudio, activePerson, setAct
           onClick={onClick}
           onMouseEnter={() => setFocus(true)}
           onMouseLeave={() => setFocus(false)}
-          style={focus || activePerson?.name === name ? style : null}
+          style={focus || activePerson?.name === name ? playStyle : null}
           {...props}
       >
         <img

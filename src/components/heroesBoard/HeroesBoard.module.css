@@ -5,4 +5,5 @@
   flex-wrap: wrap;
   column-gap: 5vw;
   row-gap: 5vh;
+  padding-bottom: 20px;
 }
